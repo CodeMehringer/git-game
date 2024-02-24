@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous|Sigmar+One" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./Game.css">
+    <script src="./Game.js"></script>
+    <title>Uh, Oh! Game</title>
+    
+</head>
+<body>
+    <audio loop="loop" autoplay="autoplay"></audio>
+    <img src="./Uh-oh.jpg" alt="logo" class="logo">
+    <h1>Uh, Oh! Game</h1>
+    <div id="gameInfo"></div>
+
+    <h1>Welcome to Uh-Oh! Board Game</h1>
+    <div id="startGame" class="animated fadeInUpBig">  
+        Welcome to a beginner version of Uh-Oh! <a href="GameRules.html" target="_blank">Here</a> are the rules to play 
+        <form>
+            First Player name: 
+            <input type="text" id="player1Name" placeholder="Player1" required>
+            <br>Second Player name: 
+            <input type="text" id="player1Name" placeholder="Player2" required>
+            <br>Third Player name:
+            <input type="text" id="player3Name" placeholder="Player3">
+            <br>Fourth Player name:
+            <input type="text" id="player4Name" placeholder="Player4">
+            <br><br>
+            <button class="button" onclick="startBtn()">Lets Play</button>
+                
+        </form>
+    </div>
+    <div class="gameSection animated rotateIn">
+        <div class="flex-container">
+          <div class="row row1">
+            <div class="flex-box cell cell1" id="cell1">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell2">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell3">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell4">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell5">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell6">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell7">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell8">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell9">
+              <div class="piece redPiece"></div>
+            </div>
+            <div class="flex-box cell" id="cell10">
+              <div class="piece redPiece"></div>
+            </div>
+          </div>
+          <div class="column">
+              <div class="row row3">
+              <div class="flex-box cell" id="cell24">
+                <div class="piece bluePiece"></div>
+              </div>
+              <div class="flex-box cell" id="cell23">
+                <div class="piece bluePiece"></div>
+              </div>
+            </div>
+            <div class="circle">
+              <div class="flex-circle small" id='circleOne'>
+                <div class="piece" id="mainPiece1"></div>
+              </div>
+              <div class="flex-circle big" id='circleDice'>
+                <div class="dice" id="diceImg"><img src="NEED CARD IMG"></div>
+              </div>
+              <div class="flex-circle small" id='circleTwo'>
+                <div class="piece" id='mainPiece2'></div>
+              </div>
+            </div>
+                    <div class="row row2">
+              <div class="flex-box cell" id="cell11">
+                <div class="piece redPiece"></div>
+              </div>
+              <div class="flex-box cell" id="cell12">
+                <div class="piece redPiece"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row row4">
+            <div class="flex-box cell" id="cell22">
+              <div class="piece bluePiece"></div>
+              
+            </div>
+            <div class="flex-box cell" id="cell21">
+              <div class="piece bluePiece"></div>
+              
+            </div>
+            <div class="flex-box cell" id="cell20">
+              <div class="piece bluePiece"></div>
+              
+            </div>
+            <div class="flex-box cell" id="cell19">
+              <div class="piece bluePiece"></div>
+             
+            </div>
+            <div class="flex-box cell" id="cell18">
+              <div class="piece bluePiece"></div>
+            
+            </div>
+            <div class="flex-box cell" id="cell17">
+              <div class="piece bluePiece"></div>
+             
+            </div>
+            <div class="flex-box cell" id="cell16">
+              <div class="piece bluePiece"></div>
+              
+            </div>
+            <div class="flex-box cell" id="cell15">
+              <div class="piece bluePiece"></div>
+             
+            </div>
+            <div class="flex-box cell" id="cell14">
+              <div class="piece bluePiece"></div>
+            
+            </div>
+            <div class="flex-box cell" id="cell13">
+              <div class="piece bluePiece"></div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>
+    <script>
+   
+   
+   class Game {
+            constructor() {
+                this.numPlayers;
+                this.players = []; // List of Player objects
+                this.currentPlayer;
+            }
+
+            initialize(numPlayers) {
+                this.numPlayers = numPlayers;
+                this.players = [];
+                for (let i = 0; i < numPlayers; i++) {
+                    this.players.push(new Player(i));
+                }
+                this.currentPlayer = 0;
+            }
+
+            playTurn() {
+                const player = this.getCurrentPlayer();
+                const diceRoll = Math.floor(Math.random() * 6) + 1;
+                console.log("Player", player.id, ", it's your turn. You rolled a", diceRoll);
+                player.move(diceRoll);
+                this.checkCollisions(player);
+                this.switchToNextPlayer();
+            }
+
+            getCurrentPlayer() {
+                return this.players[this.currentPlayer];
+            }
+
+            checkCollisions(player) {
+                for (const otherPlayer of this.players) {
+                    if (otherPlayer !== player && otherPlayer.position === player.position) {
+                        console.log(`Collision detected between Player ${player.id} and Player ${otherPlayer.id}!`);
+                        otherPlayer.position = 0; // goes back to start
+                    }
+                }
+            }
+
+            switchToNextPlayer() {
+                this.currentPlayer = (this.currentPlayer + 1) % this.numPlayers;
+            }
+
+            getGameInfo() {
+                const player = this.getCurrentPlayer();
+                return `Player ${player.id}, it's your turn. Current position: ${player.position}`;
+            }
+        }
+
+        class Player {
+            constructor(id) {
+                this.id = id;
+                this.position = 0;
+            }
+
+            move(steps) {
+                this.position += steps;
+            }
+        }
+
+        // Main program
+        const game = new Game();
+
+        function startGame() {
+            const numPlayers = prompt("Enter the number of players");
+            if (numPlayers === null) {
+                return;
+            }
+
+            game.initialize(parseInt(numPlayers, 10));
+            updateGameInfo();
+        }
+
+        function playTurn() {
+            game.playTurn();
+            updateGameInfo();
+        }
+
+        function updateGameInfo() {
+            const gameInfoElement = document.getElementById("gameInfo");
+            gameInfoElement.textContent = game.getGameInfo();
+        }
+    </script>
+</body>
+</html>    
