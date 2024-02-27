@@ -7,13 +7,13 @@
     <link href="https://fonts.googleapis.com/css?family=Righteous|Sigmar+One" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./Game.css">
-    <script src="./Game.js"></script>
+    <script src="./Game2.js"></script>
     <title>Uh, Oh! Game</title>
     
 </head>
 <body>
-    <audio loop="loop" autoplay="autoplay"></audio>
-    <img src="./Uh-oh.jpg" alt="logo" class="logo">
+    <audio loop="loop" autoplay="autoplay"></audio> <!--audio file is named uh-oh-audio, not yet attached-->
+    <img src="Uh-oh.png" alt="logo" class="mx-auto d-block shadow">
     <h1>Uh, Oh! Game</h1>
     <div id="gameInfo"></div>
 
@@ -146,87 +146,87 @@
     <script>
    
    
-   class Game {
-            constructor() {
-                this.numPlayers;
-                this.players = []; // List of Player objects
-                this.currentPlayer;
-            }
+//    class Game {
+//             constructor() {
+//                 this.numPlayers;
+//                 this.players = []; // List of Player objects
+//                 this.currentPlayer;
+//             }
 
-            initialize(numPlayers) {
-                this.numPlayers = numPlayers;
-                this.players = [];
-                for (let i = 0; i < numPlayers; i++) {
-                    this.players.push(new Player(i));
-                }
-                this.currentPlayer = 0;
-            }
+//             initialize(numPlayers) {
+//                 this.numPlayers = numPlayers;
+//                 this.players = [];
+//                 for (let i = 0; i < numPlayers; i++) {
+//                     this.players.push(new Player(i));
+//                 }
+//                 this.currentPlayer = 0;
+//             }
 
-            playTurn() {
-                const player = this.getCurrentPlayer();
-                const diceRoll = Math.floor(Math.random() * 6) + 1;
-                console.log("Player", player.id, ", it's your turn. You rolled a", diceRoll);
-                player.move(diceRoll);
-                this.checkCollisions(player);
-                this.switchToNextPlayer();
-            }
+//             playTurn() {
+//                 const player = this.getCurrentPlayer();
+//                 const diceRoll = Math.floor(Math.random() * 10) + 1;
+//                 console.log("Player", player.id, ", it's your turn. You rolled a", diceRoll);
+//                 player.move(diceRoll);
+//                 this.checkCollisions(player);
+//                 this.switchToNextPlayer();
+//             }
 
-            getCurrentPlayer() {
-                return this.players[this.currentPlayer];
-            }
+//             getCurrentPlayer() {
+//                 return this.players[this.currentPlayer];
+//             }
 
-            checkCollisions(player) {
-                for (const otherPlayer of this.players) {
-                    if (otherPlayer !== player && otherPlayer.position === player.position) {
-                        console.log(`Collision detected between Player ${player.id} and Player ${otherPlayer.id}!`);
-                        otherPlayer.position = 0; // goes back to start
-                    }
-                }
-            }
+//             checkCollisions(player) {
+//                 for (const otherPlayer of this.players) {
+//                     if (otherPlayer !== player && otherPlayer.position === player.position) {
+//                         console.log(`Collision detected between Player ${player.id} and Player ${otherPlayer.id}!`);
+//                         otherPlayer.position = 0; // goes back to start
+//                     }
+//                 }
+//             }
 
-            switchToNextPlayer() {
-                this.currentPlayer = (this.currentPlayer + 1) % this.numPlayers;
-            }
+//             switchToNextPlayer() {
+//                 this.currentPlayer = (this.currentPlayer + 1) % this.numPlayers;
+//             }
 
-            getGameInfo() {
-                const player = this.getCurrentPlayer();
-                return `Player ${player.id}, it's your turn. Current position: ${player.position}`;
-            }
-        }
+//             getGameInfo() {
+//                 const player = this.getCurrentPlayer();
+//                 return `Player ${player.id}, it's your turn. Current position: ${player.position}`;
+//             }
+//         }
 
-        class Player {
-            constructor(id) {
-                this.id = id;
-                this.position = 0;
-            }
+//         class Player {
+//             constructor(id) {
+//                 this.id = id;
+//                 this.position = 0;
+//             }
 
-            move(steps) {
-                this.position += steps;
-            }
-        }
+//             move(steps) {
+//                 this.position += steps;
+//             }
+//         }
 
-        // Main program
-        const game = new Game();
+//         // Main program
+//         const game = new Game();
 
-        function startGame() {
-            const numPlayers = prompt("Enter the number of players");
-            if (numPlayers === null) {
-                return;
-            }
+//         function startGame() {
+//             const numPlayers = prompt("Enter the number of players");
+//             if (numPlayers === null) {
+//                 return;
+//             }
 
-            game.initialize(parseInt(numPlayers, 10));
-            updateGameInfo();
-        }
+//             game.initialize(parseInt(numPlayers, 10));
+//             updateGameInfo();
+//         }
 
-        function playTurn() {
-            game.playTurn();
-            updateGameInfo();
-        }
+//         function playTurn() {
+//             game.playTurn();
+//             updateGameInfo();
+//         }
 
-        function updateGameInfo() {
-            const gameInfoElement = document.getElementById("gameInfo");
-            gameInfoElement.textContent = game.getGameInfo();
-        }
-    </script>
-</body>
-</html>    
+//         function updateGameInfo() {
+//             const gameInfoElement = document.getElementById("gameInfo");
+//             gameInfoElement.textContent = game.getGameInfo();
+//         }
+//     </script>
+// </body>
+// </html>    
