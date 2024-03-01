@@ -5,15 +5,22 @@
   "main": "Game.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    ,"start": "parcel --open"
   },
+  "keywords": [
+    "javascript",
+    "oop",
+    "classes",
+    "es6",
+    "model"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CodeMehringer/git-game.git"
   },
   "author": "Jennifer & Tim",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CodeMehringer/git-game/issues"
-  },
-  "homepage": "https://github.com/CodeMehringer/git-game#readme"
+  "devDependencies": {
+  "parcel": "^2.11.0",
+  }
 }

@@ -16,7 +16,7 @@
       event.preventDefault();
         console.log('Game starts!');
         $('h1').text(`Draw a card to begin! \n${value.val()}'s Turn`);
-        
+        $('images\Uh-oh.png').addClass('animated infinite tada')
         $('#startBtn').addClass('zoomOutDown')
         $('.gameSection').css('display', 'flex');
     
@@ -117,9 +117,9 @@
 
     let cells = [];
 
-    cell.each(function (i, d) {
-        cells.push(new Cell(i, $(d)));
-    });
+    // cell.each(function (i, d) {
+    //     cells.push(new Cell(i, $(d)));
+    // });
     
     for (var i = 0; i < newCell.length; i++) {
       cells.push(new Cell (i, newCell[i]));
@@ -138,7 +138,7 @@
     //create an object of a Dice
       function rollDice() {
         var dice = {
-          sides: 10,
+          sides: 12,
           // method to generate number
           roll: function () {
             // random number between 0-1, times the amount of possible side,
@@ -201,14 +201,30 @@
           diceVal = 10;
           movePiece();
         }
+        if(value === 10) {
+          $(".dice > img").attr("src","NEED CARD IMG");
+          diceVal = 10;
+          movePiece();
+        }
+        if(value === 11) {
+          $(".dice > img").attr("src","NEED CARD IMG");
+          diceVal = 11;
+          movePiece();
+        }
+        if(value === 12) {
+          $(".dice > img").attr("src","NEED CARD IMG");
+          diceVal = 12;
+          movePiece();
+        }
         return value;
       }
     
-        let redCurrent = 0;
-        let blueCurrent = 10;
+  let redCurrent = 0;
+  let blueCurrent = 10;
+        //need for green and yellow
     
-        function movePiece() {
-        checkWin();
+  function movePiece() {
+  checkWin();
     
     
           if (turns == 'red') {
@@ -244,15 +260,7 @@
           }
     
       }
-     // function isHigher(turn) {
-     //   if ((redCurrent + diceVal) > 9) {
-     //     alert('You rolled too high! Wait till next turn');
-     //     return true;
-     //   }
-     //   if ((blueCurrent + diceVal) > 21) {
-     //     alert('You rolled too high! Wait till next turn');
-     //     return true;
-     //   }
+
       }
     
         function changeTurns() {
@@ -323,7 +331,7 @@
           });
         }
 
-        if(turns == 'blue') {
+        if(turns == 'yellow') {
           let clickMainPiece4 = $('#mainPiece4').click(function() {
               console.log('this has been clicked');
               $('#mainPiece4').css('display','none');
@@ -360,53 +368,53 @@
        }
     
     
-         let player1 = new Player(1,'red', clickMainPiece1) ;
-         let player2 = new Player(2,'blue', clickMainPiece2);
-         let player3 = new Player(3,'green', clickMainPiece3);
-         let player4 = new Player(4,'yellow', clickMainPiece4);
+//          let player1 = new Player(1,'red', clickMainPiece1) ;
+//          let player2 = new Player(2,'blue', clickMainPiece2);
+//          let player3 = new Player(3,'green', clickMainPiece3);
+//          let player4 = new Player(4,'yellow', clickMainPiece4);
 
-         console.log(player1)
-         console.log(player2)
-         console.log(player3)
-         console.log(player4)
+//          console.log(player1)
+//          console.log(player2)
+//          console.log(player3)
+//          console.log(player4)
 
-class Game {
-    constructor() {
-      this.players = ['red', 'blue', 'green', 'yellow'];
-      this.currentPlayer = 0;
-      this.diceValue = 0;
-    }
+// class Game {
+//     constructor() {
+//       this.players = ['red', 'blue', 'green', 'yellow'];
+//       this.currentPlayer = 0;
+//       this.diceValue = 0;
+//     }
   
-    rollDice() {
-      // Generate a random dice value between 1 and 10
-      this.diceValue = Math.floor(Math.random() * 10) + 1;
-      console.log(`Dice rolled: ${this.diceValue}`);
-      return this.diceValue;
-    }
+//     rollDice() {
+//       // Generate a random dice value between 1 and 10
+//       this.diceValue = Math.floor(Math.random() * 10) + 1;
+//       console.log(`Dice rolled: ${this.diceValue}`);
+//       return this.diceValue;
+//     }
   
-    movePiece(playerColor) {
-      // Implement the logic to move the piece based on the dice value
-      // For simplicity, let's just log the move for now
-      console.log(`${playerColor} piece moved ${this.diceValue} steps.`);
-    }
+//     movePiece(playerColor) {
+//       // Implement the logic to move the piece based on the dice value
+//       // For simplicity, let's just log the move for now
+//       console.log(`${playerColor} piece moved ${this.diceValue} steps.`);
+//     }
   
-    switchPlayer() {
-      this.currentPlayer = (this.currentPlayer + 1) % this.players.length;
-      console.log(`Switching to ${this.players[this.currentPlayer]}'s turn.`);
-    }
-  }
+//     switchPlayer() {
+//       this.currentPlayer = (this.currentPlayer + 1) % this.players.length;
+//       console.log(`Switching to ${this.players[this.currentPlayer]}'s turn.`);
+//     }
+//   }
   
-  // jQuery ready function
-  $(document).ready(() => {
-    const game = new Game();
+//   // jQuery ready function
+//   $(document).ready(() => {
+//     const game = new Game();
   
-    // Attach a click event to the dice
-    $('.dice').click(() => {
-        const currentPlayerColor = game.players[game.currentPlayer];
-        const diceValue = game.rollDice();
-        game.movePiece(currentPlayerColor);
+//     // Attach a click event to the dice
+//     $('.dice').click(() => {
+//         const currentPlayerColor = game.players[game.currentPlayer];
+//         const diceValue = game.rollDice();
+//         game.movePiece(currentPlayerColor);
   
-      // Switch to the next player after a move
-      game.switchPlayer();
-    });
-  });
+//       // Switch to the next player after a move
+//       game.switchPlayer();
+//     });
+//   });
