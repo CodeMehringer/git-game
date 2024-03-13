@@ -21,6 +21,6 @@
   "author": "Jennifer & Tim",
   "license": "ISC",
   "devDependencies": {
-  "parcel": "^2.11.0",
+  "parcel": "^2.11.0"
   }
 }
