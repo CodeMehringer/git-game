@@ -1,33 +1,33 @@
 $(document).ready(() => {  
 
     // Starts game after landing page gets button
-$('#startGame').click(() => { // Changed the selector to match the HTML
+$('#startGame').click((event) => { 
   event.preventDefault();
   console.log('Game starts!');
-  $('h1').text(`Draw a card to begin! \n${value1}'s Turn`); // Fixed value1 instead of value
-  $('images\Uh-oh.png').addClass('animated infinite tada'); // Fixed selector to use correct syntax
+  $('h1').text(`Draw a card to begin! \n${value1}'s Turn`); 
+  $('img[src="images\\Uh-oh.png"]').addClass('animated infinite tada'); 
   $('#startGame').addClass('zoomOutDown');
   $('.gameSection').css('display', 'flex');
 });
-const value1 = $('#player1Name').val();
-const value2 = $('#player2Name').val();
-const value3 = $('#player3Name').val();
-const value4 = $('#player4Name').val();
-      
-console.log(player1)
-console.log(player2)
-console.log(player3)
-console.log(player4)  
-
-
+ 
+let counter = 0; 
+let turns = 'red'; 
     
 const player1 = new Player(value1, 'red', clickMainPiece1); 
 const player2 = new Player(value2, 'blue', clickMainPiece2); 
 const player3 = new Player(value3, 'green', clickMainPiece3); 
-const player4 = new Player(value4, 'yellow', clickMainPiece4);  
+const player4 = new Player(value4, 'yellow', clickMainPiece4); 
+
+const value1 = $('#player1Name').val();
+const value2 = $('#player2Name').val();
+const value3 = $('#player3Name').val();
+const value4 = $('#player4Name').val();  
     //sets an array of all the flexboxes
 const cell = $('.cell');
-    
+console.log(player1)
+console.log(player2)
+console.log(player3)
+console.log(player4)    
     
 var part0 = cell.slice(0, 10);
 var part1 = cell.slice(11, 20);
@@ -63,7 +63,7 @@ const newCell = adjCell(part0, part2, part3, part1);
 console.log(newCell);
 
 class Player {
-  constructor(player, color, clickMainPiece, currentPlayer) {
+  constructor(player, color, clickMainPiece) {
       this.player = player
       this.color = color
       this.clickMainPiece = clickMainPiece
@@ -122,8 +122,8 @@ class Cell {
   }
 
   const cells = [];
-  $('.cell').each(function (i, d) {
-      cells.push(new Cell(i, $(d)));
+  $('.cell').each(function (i, element) {
+      cells.push(new Cell(i, $(element)));
   });
 
   for (let i = 0; i < newCell.length; i++) {
@@ -165,73 +165,73 @@ function movePiece(diceValue) {
   console.log(`Switching to ${nextPlayer().player}'s turn.`);
 checkWin();
 
-  if(value === 1) {
+  if(diceValue === 1) {
      $(".dice > img").attr("src","NEED CARD IMG");
      diceVal = 1;
       movePiece();
   }
-  if(value === 2) {
+  if(diceValue === 2) {
      $(".dice > img").attr("src","NEED CARD IMG");
       diceVal = 2;
       movePiece();
   }
-  if(value === 3) {
+  if(diceValue === 3) {
      $(".dice > img").attr("src","NEED CARD IMG");
      diceVal = 3;
      movePiece();
   }
-  if(value === 4) {
+  if(diceValue === 4) {
     $(".dice > img").attr("src","NEED CARD IMG");
      diceVal = 4;
     movePiece();
   }
-  if(value === 5) {
+  if(diceValue === 5) {
     $(".dice > img").attr("src","NEED CARD IMG");
     diceVal = 5;
     movePiece();
   }
-  if(value === 6) {
+  if(diceValue === 6) {
     $(".dice > img").attr("src","NEED CARD IMG");
     diceVal = 6;
     $('h1').text('You Rolled a Six. Roll Again!');
     rollSix();
     movePiece();
   }
-  if(value === 7) {
+  if(diceValue === 7) {
     $(".dice > img").attr("src","NEED CARD IMG");
     diceVal = 7;
     movePiece();
   }
-  if(value === 8) {
+  if(diceValue === 8) {
     $(".dice > img").attr("src","NEED CARD IMG");
     diceVal = 8;
     movePiece();
   }
-    if(value === 9) {
+  if(diceValue === 9) {
       $(".dice > img").attr("src","NEED CARD IMG");
       diceVal = 9;
       movePiece();
-    }
-    if(value === 10) {
+  }
+  if(diceValue === 10) {
       $(".dice > img").attr("src","NEED CARD IMG");
       diceVal = 10;
       movePiece();
-    }
-    if(value === 10) {
+  }
+  if(diceValue === 10) {
       $(".dice > img").attr("src","NEED CARD IMG");
       diceVal = 10;
       movePiece();
-    }
-    if(value === 11) {
+  }
+  if(diceValue === 11) {
       $(".dice > img").attr("src","NEED CARD IMG");
       diceVal = 11;
       movePiece();
-    }
-    if(value === 12) {
+  }
+  if(diceValue === 12) {
       $(".dice > img").attr("src","NEED CARD IMG");
       diceVal = 12;
       movePiece();
-    }
+  }
       return value;
 } 
 
@@ -248,16 +248,15 @@ checkWin();
       $('#startGame').text(`${value2.val()} wins!`)
     }
   }
-   function rollSix() {
+  function rollSix() {
   
-     if(turns == 'red') {
-       let clickMainPiece1 = $('#mainPiece1').click(function() {
-           console.log('this has been clicked');
-           $('#mainPiece1').css('display','none');
-           $('.redPiece').css('visibility', 'visible');
-           rollDice();
-            changeTurns();
-      )};
+    if(turns == 'red') {
+      let clickMainPiece1 = $('#mainPiece1').click(function() {
+          console.log('this has been clicked');
+          $('#mainPiece1').css('display','none');
+          $('.redPiece').css('visibility', 'visible');
+          changeTurns();
+      });
     }
   
      if(turns == 'blue') {
@@ -265,7 +264,6 @@ checkWin();
            console.log('this has been clicked');
            $('#mainPiece2').css('display','none');
            $('.bluePiece').css('visibility', 'visible');
-           rollDice();
             changeTurns();
        });
      }
@@ -275,7 +273,6 @@ checkWin();
           console.log('this has been clicked');
           $('#mainPiece3').css('display','none');
           $('.greenPiece').css('visibility', 'visible');
-          rollDice();
            changeTurns();
       });
     }
@@ -285,7 +282,6 @@ checkWin();
           console.log('this has been clicked');
           $('#mainPiece4').css('display','none');
           $('.yellowPiece').css('visibility', 'visible');
-          rollDice();
            changeTurns();
       });
     }
