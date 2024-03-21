@@ -27,7 +27,7 @@ button:hover {
 }  */
 
 #startGame {
-    /*display: none;*/
+    display: none;
     width: 40vw;
     height: 20vw;
     top: 110px;
@@ -36,14 +36,19 @@ button:hover {
     left: 30vw;
     bottom: 190px;
     margin-top: 100px;
-    /*margin-left: -150px;*/
+    margin-left: -150px;
     padding-top: 60px;
-    /*padding-bottom: 100px;*/
+    padding-bottom: 100px;
     text-align: center;
     border-radius: 5px;
     color: rgb(235, 24, 24);
     font-size: 1.25em;
-    z-index: -1;
+    z-index: 1;
+    transition: display 0.5s ease;
+}
+#startGame.active {
+    display: block;
+    z-index: 1; 
 }
 .logo {
     width: 28vw;
@@ -57,7 +62,8 @@ button:hover {
     justify-content: center;
     width: 100%;
     margin: 5vw 0;
-  }
+    position: relative;
+}
   
 .flex-container {
     position: flex ;
@@ -70,18 +76,18 @@ button:hover {
     flex-flow: column;
     border-collapse: collapse;
   
-  }
+}
   
 .row1 {
     margin: 0 auto;
     display: flex;
     align-content: flex-start;
-  }
+}
   
 .row1 .flex-box{
     background-color: #FF614C;
   
-  }
+}
   
 .column {
     display: flex;
@@ -101,18 +107,18 @@ button:hover {
     align-content: flex-start;
     /*order: 1;*/
 }
-.row4 {
+/* .row4 {
     display: flex;
     flex-direction: row;
     align-content: flex-end;
-}
+} */
   
-.row4 .flex-box{
+/* .row4 .flex-box{
     margin: 0 auto;
     display: flex;
     flex-flow: row-reverse nowrap;
     background-color: #1594FD;
-}
+} */
   
 .circle {
     display: flex;

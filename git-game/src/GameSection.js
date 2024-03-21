@@ -1,14 +1,21 @@
 import React from 'react';
 import './Game.css';
+import { useState } from 'react';
 
 function GameSection() {
+  const [startGameVisible, setStartGameVisible] = useState(false);
+
+  const startGame =() => {
+
+    setStartGameVisible(true);
+  }
   return (
     <div id="gameSection">
-      <div className="flex-container"> </div>
-      <div class="row row1">
-      </div>
-      <div class="gameSection animated rotateIn"></div>
+      <button onClick={startGame}>Start Game</button>
+        <div className="flex-container"> </div>
         <div class="row row1">
+          <div class="gameSection animated rotateIn"></div>
+          <div id="startGame" className={startGameVisible ? 'active' : ''}></div>
           <div class="flex-box" id="cell1">
             <div class="piece" id="redPiece"></div>
             <div class="piece" id="bluePiece"></div>
