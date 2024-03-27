@@ -5,16 +5,9 @@ body {
     text-align: center;
     margin: 20px;
 }
-/* header {
-    border: 2px;
-    border: solid, rgb(244, 244, 247);
-    height: 100px;
-    background-color: #f0f0f0;
-    padding: 1vw 0;
-} */
+
 button {
     position: absolute;
-    float: right;
     font-size: 16px;
     cursor: pointer;
 }  
@@ -22,9 +15,46 @@ button:hover {
     background-color: #ddd;
 }
 
- /* h1 {
-    color: #c73f3f;
-}  */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+.flex-box {
+    display: flex;
+}
+
+
+.cell {
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    position: relative;
+}
+
+.flex-circle {
+    border: 1px solid black;
+    border-radius: 50%;
+    width   : 40px;
+    height  : 40px;
+}
+
+.circle > :nth-child(2) {
+    border: none !important;
+    width: 12vw;
+    height: 12vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.piece {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
 
 #startGame {
     display: none;
@@ -59,32 +89,37 @@ button:hover {
 
 .gameSection {
     display: none;
-    justify-content: center;
-    width: 100%;
-    margin: 5vw 0;
-    position: relative;
+    margin-top: 20px;
 }
   
-.flex-container {
-    position: flex ;
-    border: 1px solid black;
-    justify-content: space-between;
-    align-items: center;
-    width: calc(100% -20px);
-    padding: 0 10px;
+#gameSection {
+    text-align: center;
+}
+.gameSection.active {
+    display: block;
+}
+
+.dice {
+    border-radius: 50%;
+    width: 50vw;
+    height: 50vw;
     display: flex;
-    flex-flow: column;
-    border-collapse: collapse;
-  
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
-  
+
+.dice img {
+    width: 100%;
+    height: 100%;
+}  
 .row1 {
     margin: 0 auto;
     display: flex;
     align-content: flex-start;
 }
   
-.row1 .flex-box{
+.row1.flex-box{
     background-color: #FF614C;
   
 }
@@ -107,35 +142,18 @@ button:hover {
     align-content: flex-start;
     /*order: 1;*/
 }
-/* .row4 {
-    display: flex;
-    flex-direction: row;
-    align-content: flex-end;
-} */
-  
-/* .row4 .flex-box{
-    margin: 0 auto;
-    display: flex;
-    flex-flow: row-reverse nowrap;
-    background-color: #1594FD;
-} */
+
   
 .circle {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-around;
     width: 80px;
     height: 80px;
-    border-radius: 80%;
+    border-radius: 50%;
+    margin: top;
 }
   
-.flex-circle {
-    border: 1px solid black;
-    border-radius: 50%;
-    width   : 5vw;
-    height  : 5vw;
-}
   
 .small {
     display: flex;
@@ -143,15 +161,7 @@ button:hover {
     align-items: center;
 }
   
-.circle > :nth-child(2) {
-    border: none !important;
-    width: 12vw;
-    height: 12vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-  
+
 #circleOne {
     background-color: #FF614C;
 }
@@ -167,20 +177,8 @@ button:hover {
 #circleFour {
     background-color: #defd15;
 }
-.piece {
-    border: 1px solid black;
-    border-radius: 80%;
-    width   : 2vw;
-    height  : 2vw;
-}
-  
-  /*
-  #circleOne > :first-child {
-    position: absolute;
-    background-color: red;
-    display: none;
-  }*/
-  
+
+
 #mainPiece1 {
     border: 1px solid black;
     border-radius: 80%;
@@ -190,8 +188,7 @@ button:hover {
     background-color: #FF2407;
     /*display: none;*/
 }
-  
-  
+   
 #mainPiece2 {
     border: 1px solid black;
     border-radius: 80%;
@@ -210,28 +207,6 @@ button:hover {
     background-color: #27ce6a;
     /*display: none;*/
 }
-.greenPiece {
-    background-color: #138e2c;
-    position: absolute;
-    /*left: 11.25vw;*/
-    /*left: 0vw;*/
-    visibility: hidden;
-}
-.bluePiece {
-    background-color: blue;
-    position: absolute;
-    /*right: 11.25vw;*/
-    visibility: hidden;
-  
-}
-
-.redPiece {
-    background-color: #FF2407;
-    position: absolute;
-    /* left: 11.25vw;
-    left: 0vw; */
-    visibility: hidden;
-}
 #mainPiece4 {
     border: 1px solid black;
     border-radius: 80%;
@@ -241,18 +216,36 @@ button:hover {
     background-color: #e6f93b;
     /*display: none;*/
 }
+.greenPiece {
+    background-color: #138e2c;
+    position: absolute;
+    left: 25px;
+    right: 5px; 
+}
+.bluePiece {
+    background-color: blue;
+    position: absolute;
+    right: 25px;
+    left: 5px;
+}
+
+.redPiece {
+    background-color: #FF2407;
+    position: absolute;
+    bottom: 25px;
+    top: 5px;
+}
+
 .yellowPiece {
     background-color: rgb(222, 249, 11);
     position: absolute;
-    /*right: 11.25vw;*/
-    visibility: hidden;
-} 
-
+    top: 25px;
+    bottom: 5px; 
+}
 .dice {
     /*border: 1px solid black;*/
-    border-radius: 900%;
-    width   : 50vw;
-    height  : 50vw;
+    width   : 120px;
+    height  : 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -260,7 +253,7 @@ button:hover {
 }
   
 .dice img {
-    src: images; /*all images are in this file. unsure on how to get them to present in the stack*/
+    src: ('git-game\images\Uh-oh.png'); /*all images are in this file. unsure on how to get them to present in the stack*/
     flex-shrink: 0;
     min-width: 100%;
     min-height: 100%
