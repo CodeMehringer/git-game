@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GameSection from './GameSection';
+import GameSection from './components/GameSection';
+import HomeCircle from './components/HomeCircle';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -31,6 +34,7 @@ const Game = () => {
 
         <div id="gameSection">
           {GameSection}
+          {HomeCircle}
           
         </div>
 
