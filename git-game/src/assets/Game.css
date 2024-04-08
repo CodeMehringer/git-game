@@ -23,7 +23,7 @@ input[type="text"] {
     border-radius: 10px; /* Soft rounded edges */
 }
 button {
-    position: absolute;
+    position: center;
     font-size: 16px;
     cursor: pointer;
     color: red; /* Red text color */
