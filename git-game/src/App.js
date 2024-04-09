@@ -1,16 +1,27 @@
 import React from 'react';
+import './App.css';
 import GameSection from './components/GameSection';
-
+// import HomeCircle from './components/HomeCircle';
 
 function App() {
   return (
-    <div className='App'>
-      
-      <GameSection />
+    <div className="App">
+      {/* <header className="App-header">
+        <img src="../../src/assets/images/Uh-oh.png" alt="Game Title Uh-Oh" />
+        <br />
+        <br />
+        <button className="reset startBtn">Reset</button>
+        <br />
+        <br />
+      </header> */}
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossOrigin="anonymous"></script>
+      <div id="gameSection">
+        <GameSection />
+        {/* <HomeCircle /> */}
+      </div>
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
+      <script src="./Game1.js"></script>
     </div>
   );
 }

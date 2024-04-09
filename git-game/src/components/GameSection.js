@@ -3,6 +3,7 @@ import '../assets/Game.css';
 import HomeCircle from './HomeCircle';
 import LoginModal from './LoginModal';
 import GameRulesModal from '../components/GameRulesModal';
+import App from '../App';
 
 function GameSection() {
   const [startGameVisible, setStartGameVisible] = useState(true);
